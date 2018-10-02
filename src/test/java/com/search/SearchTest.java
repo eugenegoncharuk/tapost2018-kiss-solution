@@ -39,7 +39,7 @@ public class SearchTest extends FrameworkTest {
     }
 
     @DisplayName("Test Search in SubCategory with no results")
-    @Tag("LOCAL")
+    @Tag("LOCALHOST")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void searchInSubcategoryWithNoResults() {
 
@@ -57,7 +57,7 @@ public class SearchTest extends FrameworkTest {
     }
 
     @DisplayName("Test Search in SubCategory")
-    @Tag("LOCAL")
+    @Tag("LOCALHOST")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void searchInSubcategory() {
 
@@ -76,7 +76,7 @@ public class SearchTest extends FrameworkTest {
     }
 
     @DisplayName("Test Search in Product Description")
-    @Tag("LOCAL")
+    @Tag("LOCALHOST")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void searchInProductDescription() {
 
@@ -92,7 +92,7 @@ public class SearchTest extends FrameworkTest {
     }
 
     @DisplayName("Test Search Results Sorting")
-    @Tag("LOCAL")
+    @Tag("LOCALHOST")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void searchResultsSorting() {
 
@@ -109,7 +109,7 @@ public class SearchTest extends FrameworkTest {
     }
 
     @DisplayName("Test Search check Result Pagination")
-    @Tag("LOCAL")
+    @Tag("LOCALHOST")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void searchResultsPagination() {
 
