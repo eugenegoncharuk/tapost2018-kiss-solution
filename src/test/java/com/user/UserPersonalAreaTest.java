@@ -1,4 +1,4 @@
-package com;
+package com.user;
 
 import core.Extensions.repeater.RepeatedIfExceptionsTest;
 import core.FrameworkTest;
