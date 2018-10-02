@@ -70,11 +70,6 @@ public class SearchPage extends Page {
                 .collect(toList());
     }
 
-    public void sendKeys(String input) {
-        Actions actions = new Actions(getDriver());
-        actions.sendKeys(input).perform();
-    }
-
     public void waitToBeLoaded() {
         PageUtils.waitUntilVisible(By.xpath("//h1"));
     }
