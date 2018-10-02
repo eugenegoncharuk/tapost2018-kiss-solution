@@ -104,4 +104,24 @@ public class SearchTest extends FrameworkTest {
         assertTrue(page.getProductTitlesInResults().contains("BakBook Air"));
     }
 
+    @DisplayName("Test Search Results Sorting")
+    @Tag("LOCAL")
+    @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
+    public void searchResultsSorting() {
+
+        page.waitToBeLoaded();
+
+        page.getSearchInputField().click();
+        page.sendKeys("book");
+
+        page.getSearchButton().click();
+        page.pause(3L);
+
+        page.getSortDropdown().click();
+        page.selectFromDropdown("Price (High > Low)");
+        page.pause(3L);
+
+        assertTrue(page.getProductTitlesInResults().get(0).equals("BakBook Pro"));
+    }
+
 }

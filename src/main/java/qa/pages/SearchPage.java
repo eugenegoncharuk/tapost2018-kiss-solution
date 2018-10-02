@@ -31,7 +31,7 @@ public class SearchPage extends Page {
     @FindBy(xpath = "//input[@id='button-search']")
     private WebElement searchButton;
 
-    @FindBy(xpath = "//p[contains(text(),'cart is empty')]")
+    @FindBy(xpath = "//h2/following-sibling::p")
     private WebElement emptySearchResultMessage;
 
     @FindBy(xpath = "//div[contains(@class, 'product-layout')]")
@@ -39,6 +39,9 @@ public class SearchPage extends Page {
 
     @FindBy(xpath = "//div[@class='caption']//h4/a")
     private List<WebElement> searchResultsProductsTitles;
+
+    @FindBy(xpath = "//select[@id='input-sort']")
+    private WebElement sortDropdown;
 
     private String DROPDOWN_SELECTOR_LOCATOR = "//select[@class='form-control']//option[text()='%s']";
 
