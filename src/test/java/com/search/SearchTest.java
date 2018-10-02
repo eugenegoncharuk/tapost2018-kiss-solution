@@ -25,6 +25,23 @@ public class SearchTest extends FrameworkTest {
         page.open();
     }
 
+    @DisplayName("Test Search by regular expression")
+    @Tag("LOCAL")
+    @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
+    public void searchByRegExp() {
+
+        page.waitToBeLoaded();
+
+        page.getSearchInputField().click();
+        page.sendKeys("boo");
+
+        page.getSearchButton().click();
+        page.pause(3L);
+
+        assertEquals(3, page.getSearchResultsCount(), "Verify search results is not empty");
+        assertTrue(page.getProductTitlesInResults().contains("BakBook Air"));
+    }
+
     @DisplayName("Test Search in SubCategory with no results")
     @Tag("LOCAL")
     @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
@@ -33,10 +50,10 @@ public class SearchTest extends FrameworkTest {
         page.waitToBeLoaded();
 
         page.getSearchInputField().click();
-        page.sendKeys("aaa");
+        page.sendKeys("boo");
 
         page.getCategoryDropdown().click();
-        page.selectFromDropdown("PC");
+        page.selectFromDropdown("Windows");
 
         page.getSubCategoryCheckbox().click();
 
