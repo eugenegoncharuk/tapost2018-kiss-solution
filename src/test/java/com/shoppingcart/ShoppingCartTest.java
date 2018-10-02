@@ -86,6 +86,7 @@ public class ShoppingCartTest extends FrameworkTest {
         cartPage.getTitle().click();
         cartPage.getCartQuantityInputField().sendKeys("2");
         cartPage.getCartUpdateInputButton().click();
+        cartPage.pause(2L);
 
         assertTrue(page.getShoppingCart().getText().contains("2 item(s) - 399.98€"), "Verify shopping cart Label");
     }
