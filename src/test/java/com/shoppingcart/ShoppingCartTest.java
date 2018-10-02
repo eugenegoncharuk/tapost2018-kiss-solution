@@ -48,4 +48,19 @@ public class ShoppingCartTest extends FrameworkTest {
         assertTrue(page.getShoppingCart().getText().contains("2 item(s) - 399.98€"), "Verify shopping cart Label");
     }
 
+    @DisplayName("Test add items with required fields to shopping cart")
+    @Tag("LOCAL")
+    @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
+    public void addItemsWithRequiredFieldsToShoppingCart() {
+
+        page = new ProductPage(getDriver(), Pages.MAMOTH_EOS_5D_PRODUCT_PAGE);
+        page.open();
+
+        page.getAddToCartButton().click();
+        page.pause(2L);
+
+        assertEquals("Select required!", page.getRequiredFieldMessage().getText(), "Verify required field error message");
+        assertTrue(page.getShoppingCart().getText().contains("0 item(s) - 0.00€"), "Verify shopping cart Label - No Items");
+    }
+
 }

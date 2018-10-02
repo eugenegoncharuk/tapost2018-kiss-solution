@@ -14,4 +14,5 @@ public final class Pages {
     //product pages
     public static final String MAMOTH_D300_PRODUCT_PAGE = "index.php?route=product/product&path=33&product_id=31";
     public static final String TABLET_PRODUCT_PAGE= "index.php?route=product/product&path=57&product_id=49";
+    public static final String MAMOTH_EOS_5D_PRODUCT_PAGE = "index.php?route=product/product&path=33&product_id=30";
 }

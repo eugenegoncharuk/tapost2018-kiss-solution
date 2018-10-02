@@ -22,6 +22,9 @@ public class ProductPage extends Page {
     @FindBy(xpath = "//input[@id='input-quantity']")
     private WebElement quantityInputField;
 
+    @FindBy(xpath = "//div[@class='text-danger']")
+    private WebElement requiredFieldMessage;
+
     public ProductPage(RemoteWebDriver driver, String page) {
         super(driver);
         PageFactory.initElements(driver, this);
