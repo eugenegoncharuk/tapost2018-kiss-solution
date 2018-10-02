@@ -12,6 +12,7 @@ import qa.pages.SearchPage;
 
 import static core.Extensions.selenium.SeleniumExtension.getDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SeleniumExtension.class)
 public class SearchTest extends FrameworkTest {
@@ -64,6 +65,7 @@ public class SearchTest extends FrameworkTest {
         page.pause(3L);
 
         assertEquals(1, page.getSearchResultsCount(), "Verify search result is not empty");
+        assertTrue(page.getProductTitlesInResults().contains("Space Tab 10.1"));
     }
 
 }

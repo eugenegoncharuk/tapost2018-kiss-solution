@@ -11,6 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 @Getter
 public class SearchPage extends Page {
 
@@ -35,6 +37,9 @@ public class SearchPage extends Page {
     @FindBy(xpath = "//div[contains(@class, 'product-layout')]")
     private List<WebElement> searchResults;
 
+    @FindBy(xpath = "//div[@class='caption']//h4/a")
+    private List<WebElement> searchResultsProductsTitles;
+
     private String DROPDOWN_SELECTOR_LOCATOR = "//select[@class='form-control']//option[text()='%s']";
 
     public SearchPage(RemoteWebDriver driver) {
@@ -49,6 +54,13 @@ public class SearchPage extends Page {
     public int getSearchResultsCount() {
         List<WebElement> result = getSearchResults();
         return result.size();
+    }
+
+    public List<String> getProductTitlesInResults() {
+        return getSearchResultsProductsTitles()
+                .stream()
+                .map(WebElement::getText)
+                .collect(toList());
     }
 
     public void sendKeys(String input) {
