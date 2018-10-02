@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.Keys;
 import qa.pages.Pages;
 import qa.pages.ProductPage;
 
@@ -41,6 +42,7 @@ public class ShoppingCartTest extends FrameworkTest {
         page = new ProductPage(getDriver(), Pages.TABLET_PRODUCT_PAGE);
         page.open();
 
+        page.getQuantityInputField().sendKeys(Keys.BACK_SPACE);
         page.getQuantityInputField().sendKeys("2");
         page.getAddToCartButton().click();
         page.pause(2L);
