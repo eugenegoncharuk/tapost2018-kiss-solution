@@ -4,7 +4,6 @@ import core.Extensions.repeater.RepeatedIfExceptionsTest;
 import core.Extensions.selenium.SeleniumExtension;
 import core.FrameworkTest;
 import core.remote.SeleniumException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -88,7 +87,7 @@ public class ShoppingCartTest extends FrameworkTest {
         cartPage.getCartUpdateInputButton().click();
         cartPage.pause(2L);
 
-        assertTrue(page.getShoppingCart().getText().contains("2 item(s) - 399.98€"), "Verify shopping cart Label");
+        assertTrue(page.getShoppingCart().getText().contains("2 item(s) - 160.00€"), "Verify shopping cart Label");
     }
 
     @DisplayName("Test invalid Gift Voucher on shopping cart")
