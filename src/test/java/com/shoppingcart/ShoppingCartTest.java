@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.Keys;
 import qa.pages.Pages;
 import qa.pages.ProductPage;
+import qa.pages.ShoppingCartPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -80,12 +81,38 @@ public class ShoppingCartTest extends FrameworkTest {
         page.getViewCartLink().click();
         page.pause(2L);
 
-        page.getCartQuantityInputField().sendKeys(Keys.BACK_SPACE);
-        page.getTitle().click();
-        page.getQuantityInputField().sendKeys("2");
-        page.getCartUpdateInputButton().click();
+        ShoppingCartPage cartPage = new ShoppingCartPage(getDriver());
+        cartPage.getCartQuantityInputField().sendKeys(Keys.BACK_SPACE);
+        cartPage.getTitle().click();
+        cartPage.getCartQuantityInputField().sendKeys("2");
+        cartPage.getCartUpdateInputButton().click();
 
         assertTrue(page.getShoppingCart().getText().contains("2 item(s) - 399.98€"), "Verify shopping cart Label");
+    }
+
+    @DisplayName("Test invalid Gift Voucher on shopping cart")
+    @Tag("LOCAL")
+    @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
+    public void invalidGiftVoucherOnShoppingCart() {
+
+        page = new ProductPage(getDriver(), Pages.MAMOTH_D300_PRODUCT_PAGE);
+        page.open();
+
+        page.getAddToCartButton().click();
+        page.pause(2L);
+
+        page.getShoppingCart().click();
+        page.getViewCartLink().click();
+        page.pause(2L);
+
+        ShoppingCartPage cartPage = new ShoppingCartPage(getDriver());
+        cartPage.getGiftVoucher().click();
+        cartPage.getGiftVoucherInputField().sendKeys("Invalid Voucher");
+        cartPage.getGiftVoucherSubmitButton().click();
+        cartPage.pause(2L);
+
+        assertTrue(cartPage.getWarningMessage().getText().contains("Warning: Gift Certificate is either invalid or the balance has been used up!"),
+                "Verify invalid Gift voucher message");
     }
 
 }

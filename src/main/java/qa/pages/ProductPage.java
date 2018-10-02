@@ -13,9 +13,6 @@ public class ProductPage extends Page {
 
     private String page;
 
-    @FindBy(xpath = "//h1")
-    private WebElement title;
-
     @FindBy(xpath = "//div[@id='cart']")
     private WebElement shoppingCart;
 
@@ -30,12 +27,6 @@ public class ProductPage extends Page {
 
     @FindBy(xpath = "//p[@class='text-right']//strong[contains(text(),'View Cart')]")
     private WebElement viewCartLink;
-
-    @FindBy(xpath = "//div[contains(@class,'btn-block')]//input[@class='form-control']")
-    private WebElement cartQuantityInputField;
-
-    @FindBy(xpath = "(//button[contains(@class, 'btn-primary')])[1]")
-    private WebElement cartUpdateInputButton;
 
     public ProductPage(RemoteWebDriver driver, String page) {
         super(driver);
