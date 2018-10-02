@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
-import qa.pages.CategoriesPage;
+import qa.pages.BrowseCategoriesPage;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SeleniumExtension.class)
-public class CategoriesTest extends FrameworkTest {
+public class BrowseCategoriesTest extends FrameworkTest {
 
     private static final String LAPTOPS_NOTEBOOKS_PAGE = "18";
     private static final String DESKTOPS_PAGE = "20";
@@ -28,18 +28,11 @@ public class CategoriesTest extends FrameworkTest {
     private static final String CAMERAS_PAGE = "33";
     private static final String MP3_PLAYERS_PAGE = "34";
 
-    public static final String NUMBER_PATTERN = "\\(([0-9]+)\\)";
-
     @BeforeEach
     public void initPage() {
     }
 
-    @DisplayName("Products present correctly")
-    @Tag("LOCALHOST")
-    @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
-    public void categoryClickableAndProductsAreShown() {
-
-    }
+    public static final String NUMBER_PATTERN = "\\(([0-9]+)\\)";
 
     @DisplayName("Products presented correctly")
     @Tag("LOCALHOST")
@@ -55,13 +48,23 @@ public class CategoriesTest extends FrameworkTest {
         makeAssertionsOnLoadedCategoryPage(getPageByCategory(MP3_PLAYERS_PAGE));
     }
 
-    private CategoriesPage getPageByCategory(String category) {
-        return new CategoriesPage(getDriver(), category);
-    }
-
-    private void makeAssertionsOnLoadedCategoryPage(CategoriesPage page) {
+    private BrowseCategoriesPage getPageByCategory(String category) {
+        BrowseCategoriesPage page = new BrowseCategoriesPage(getDriver(), category);
         page.openAndWaitToBeLoaded();
 
+/*
+        For future releases
+
+        Actions actions = new Actions(driver);
+        actions.moveToElement(page.getCategoryMenuByName(category));
+        actions.moveToElement(page.getShowAllForCategory(category));
+
+        actions.build().perform();*/
+
+        return page;
+    }
+
+    private void makeAssertionsOnLoadedCategoryPage(BrowseCategoriesPage page) {
         page.getInputLimitDropDown().click();
 
         page.selectFromDropdown("100");
@@ -77,6 +80,5 @@ public class CategoriesTest extends FrameworkTest {
         final int productCoundFromLeftMenu = Integer.parseInt(matcher.group(1));
         assertEquals(productCoundFromLeftMenu, productElementsCount);
     }
-
 
 }
