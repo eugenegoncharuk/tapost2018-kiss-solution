@@ -114,6 +114,7 @@ public class SearchTest extends FrameworkTest {
     public void searchResultsPagination() {
 
         page.getSearchInputField().sendKeys("web");
+        page.getDescriptionCheckbox().click();
 
         page.getSearchButton().click();
         page.pause(3L);
