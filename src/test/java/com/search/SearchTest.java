@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import qa.pages.SearchPage;
 
-import static core.Extensions.selenium.SeleniumExtension.getDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -47,7 +46,7 @@ public class SearchTest extends FrameworkTest {
         page.getSearchInputField().sendKeys("boo");
 
         page.getCategoryDropdown().click();
-        page.selectFromCategoryDropdown("Windows");
+        page.selectFromDropdown("Windows");
 
         page.getSubCategoryCheckbox().click();
 
@@ -65,7 +64,7 @@ public class SearchTest extends FrameworkTest {
         page.getSearchInputField().sendKeys("tab");
 
         page.getCategoryDropdown().click();
-        page.getSubCategoryPC().click();
+        page.selectFromDropdown("Tablets");
 
         page.getSubCategoryCheckbox().click();
 
@@ -103,10 +102,24 @@ public class SearchTest extends FrameworkTest {
         page.pause(3L);
 
         page.getSortDropdown().click();
-        page.selectFromSortDropdown("Price (High > Low)");
+        page.selectFromDropdown("Price (High > Low)");
         page.pause(3L);
 
         assertTrue(page.getProductTitlesInResults().get(0).equals("BakBook Pro"));
+    }
+
+    @DisplayName("Test Search check Result Pagination")
+    @Tag("LOCAL")
+    @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
+    public void searchResultsPagination() {
+
+        page.getSearchInputField().sendKeys("web");
+
+        page.getSearchButton().click();
+        page.pause(3L);
+
+        assertTrue(page.getSearchResultsCount() > 0 , "Verify search results is not empty");
+        assertTrue(page.getPagination().isDisplayed());
     }
 
 }

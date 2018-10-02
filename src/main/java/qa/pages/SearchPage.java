@@ -47,22 +47,15 @@ public class SearchPage extends Page {
     @FindBy(xpath = "//ul[@class='pagination']")
     private WebElement pagination;
 
-    @FindBy(xpath = "//option[contains(text(), 'PC')]")
-    private WebElement subCategoryPC;
+    private String DROPDOWN_SELECTOR = "//option[contains(text(), '%s')]";
 
     public SearchPage(RemoteWebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public void selectFromCategoryDropdown(String category) {
-        Select dropdown = new Select(PageUtils.getElementWhenVisible(By.xpath("//select[@class='form-control']")));
-        dropdown.selectByVisibleText(category);
-    }
-
-    public void selectFromSortDropdown(String category) {
-        Select dropdown = new Select(sortDropdown);
-        dropdown.selectByVisibleText(category);
+    public void selectFromDropdown(String category) {
+        PageUtils.getElementWhenVisible(By.xpath(String.format(DROPDOWN_SELECTOR, category))).click();
     }
 
     public int getSearchResultsCount() {
