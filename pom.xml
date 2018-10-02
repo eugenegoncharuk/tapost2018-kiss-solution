@@ -142,5 +142,16 @@
                 <tests>LOCALHOST</tests>
             </properties>
         </profile>
+        <profile>
+            <id>mobile</id>
+            <properties>
+                <selenium.grid>false</selenium.grid>
+                <webdriver.url>http://localhost:4723</webdriver.url>
+                <qa.user>user</qa.user>
+                <qa.password>pass</qa.password>
+                <qa.homepage>http://demoshop24.com</qa.homepage>
+                <tests>MOBILE</tests>
+            </properties>
+        </profile>
     </profiles>
 </project>
