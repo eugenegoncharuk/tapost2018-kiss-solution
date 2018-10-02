@@ -41,15 +41,21 @@ public class SearchPage extends Page {
     @FindBy(xpath = "//div[@class='caption']//h4/a")
     private List<WebElement> searchResultsProductsTitles;
 
-    private String DROPDOWN_SELECTOR_LOCATOR = "//select[@class='form-control']//option[text()='%s']";
+    @FindBy(xpath = "//select[@id='input-sort']")
+    private WebElement sortDropdown;
 
     public SearchPage(RemoteWebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public void selectFromDropdown(String category) {
-        Select dropdown = new Select(PageUtils.getElementWhenVisible(By.xpath(DROPDOWN_SELECTOR_LOCATOR)));
+    public void selectFromCategoryDropdown(String category) {
+        Select dropdown = new Select(PageUtils.getElementWhenVisible(By.xpath("//select[@class='form-control']")));
+        dropdown.selectByVisibleText(category);
+    }
+
+    public void selectFromSortDropdown(String category) {
+        Select dropdown = new Select(sortDropdown);
         dropdown.selectByVisibleText(category);
     }
 

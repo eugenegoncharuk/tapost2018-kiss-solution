@@ -53,7 +53,7 @@ public class SearchTest extends FrameworkTest {
         page.sendKeys("boo");
 
         page.getCategoryDropdown().click();
-        page.selectFromDropdown("Windows");
+        page.selectFromCategoryDropdown("Windows");
 
         page.getSubCategoryCheckbox().click();
 
@@ -74,7 +74,7 @@ public class SearchTest extends FrameworkTest {
         page.sendKeys("tab");
 
         page.getCategoryDropdown().click();
-        page.selectFromDropdown("Tablets");
+        page.selectFromCategoryDropdown("Tablets");
 
         page.getSubCategoryCheckbox().click();
 
@@ -118,7 +118,7 @@ public class SearchTest extends FrameworkTest {
         page.pause(3L);
 
         page.getSortDropdown().click();
-        page.selectFromDropdown("Price (High > Low)");
+        page.selectFromSortDropdown("Price (High > Low)");
         page.pause(3L);
 
         assertTrue(page.getProductTitlesInResults().get(0).equals("BakBook Pro"));
