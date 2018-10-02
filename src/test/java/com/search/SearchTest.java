@@ -41,7 +41,7 @@ public class SearchTest {
         page.getSearchButton().click();
         page.pause(5L);
 
-        assertEquals(6, 6, "Extension test");
+        assertEquals(1, page.getSearchResultsCount(), "Verify search result is not empty");
     }
 
 }

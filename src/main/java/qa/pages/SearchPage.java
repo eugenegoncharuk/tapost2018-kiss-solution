@@ -9,6 +9,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 @Getter
 public class SearchPage extends Page {
 
@@ -30,6 +32,9 @@ public class SearchPage extends Page {
     @FindBy(xpath = "//p[contains(text(),'cart is empty')]")
     private WebElement emptySearchResultMessage;
 
+    @FindBy(xpath = "//div[contains(@class, 'product-layout')]")
+    private List<WebElement> searchResults;
+
     private String DROPDOWN_SELECTOR_LOCATOR = "//select[@class='form-control']//option[text()='%s']";
 
     public SearchPage(RemoteWebDriver driver) {
@@ -39,6 +44,11 @@ public class SearchPage extends Page {
 
     public void selectFromDropdown(String category) {
         PageUtils.getElementWhenVisible(By.xpath(String.format(DROPDOWN_SELECTOR_LOCATOR, category))).click();
+    }
+
+    public int getSearchResultsCount() {
+        List<WebElement> result = getSearchResults();
+        return result.size();
     }
 
     public void sendKeys(String input) {
