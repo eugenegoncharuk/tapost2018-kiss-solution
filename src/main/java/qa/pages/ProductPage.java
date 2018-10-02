@@ -13,6 +13,9 @@ public class ProductPage extends Page {
 
     private String page;
 
+    @FindBy(xpath = "//h1")
+    private WebElement title;
+
     @FindBy(xpath = "//div[@id='cart']")
     private WebElement shoppingCart;
 

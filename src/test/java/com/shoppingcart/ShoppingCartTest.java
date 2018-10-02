@@ -81,6 +81,7 @@ public class ShoppingCartTest extends FrameworkTest {
         page.pause(2L);
 
         page.getCartQuantityInputField().sendKeys(Keys.BACK_SPACE);
+        page.getTitle().click();
         page.getQuantityInputField().sendKeys("2");
         page.getCartUpdateInputButton().click();
 
