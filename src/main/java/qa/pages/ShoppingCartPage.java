@@ -32,6 +32,9 @@ public class ShoppingCartPage extends Page {
     @FindBy(xpath = "//div[contains(@class,'alert-dismissible')]")
     private WebElement warningMessage;
 
+    @FindBy(xpath = "//table[@class='table-bordered']//tbody//td[last]")
+    private WebElement productPriceSum;
+
     public ShoppingCartPage(RemoteWebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);

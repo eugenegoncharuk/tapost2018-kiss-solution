@@ -25,7 +25,7 @@ public class SearchTest extends FrameworkTest {
     }
 
     @DisplayName("Test Search by regular expression")
-    @Tag("LOCAL")
+    @Tag("LOCALHOST")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void searchByRegExp() {
 

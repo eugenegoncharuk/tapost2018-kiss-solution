@@ -21,7 +21,7 @@ public class ShoppingCartTest extends FrameworkTest {
     ProductPage page;
 
     @DisplayName("Test add item to shopping cart")
-    @Tag("LOCAL")
+    @Tag("LOCALHOST")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void addItemToShoppingCart() {
 
@@ -35,7 +35,7 @@ public class ShoppingCartTest extends FrameworkTest {
     }
 
     @DisplayName("Test add several items to shopping cart")
-    @Tag("LOCAL")
+    @Tag("LOCALHOST")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void addSeveralItemsToShoppingCart() {
 
@@ -51,7 +51,7 @@ public class ShoppingCartTest extends FrameworkTest {
     }
 
     @DisplayName("Test add items with required fields to shopping cart")
-    @Tag("LOCAL")
+    @Tag("LOCALHOST")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void addItemsWithRequiredFieldsToShoppingCart() {
 
@@ -66,7 +66,7 @@ public class ShoppingCartTest extends FrameworkTest {
     }
 
     @DisplayName("Test change item count on shopping cart")
-    @Tag("LOCAL")
+    @Tag("LOCALHOST")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void changeItemCountOnShoppingCart() {
 
@@ -91,7 +91,7 @@ public class ShoppingCartTest extends FrameworkTest {
     }
 
     @DisplayName("Test invalid Gift Voucher on shopping cart")
-    @Tag("LOCAL")
+    @Tag("LOCALHOST")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void invalidGiftVoucherOnShoppingCart() {
 
@@ -113,6 +113,32 @@ public class ShoppingCartTest extends FrameworkTest {
 
         assertTrue(cartPage.getWarningMessage().getText().contains("Warning: Gift Certificate is either invalid or the balance has been used up!"),
                 "Verify invalid Gift voucher message");
+    }
+
+    @DisplayName("Test valid Gift Voucher on shopping cart")
+    @Tag("LOCALHOST")
+    @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
+    public void validGiftVoucherOnShoppingCart() {
+
+        page = new ProductPage(getDriver(), Pages.MAMOTH_D300_PRODUCT_PAGE);
+        page.open();
+
+        page.getAddToCartButton().click();
+        page.pause(2L);
+
+        page.getShoppingCart().click();
+        page.getViewCartLink().click();
+        page.pause(2L);
+
+        ShoppingCartPage cartPage = new ShoppingCartPage(getDriver());
+        cartPage.getGiftVoucher().click();
+        cartPage.getGiftVoucherInputField().sendKeys("Invalid Voucher");
+        cartPage.getGiftVoucherSubmitButton().click();
+        cartPage.pause(2L);
+
+        assertTrue(cartPage.getWarningMessage().getText().contains("Warning: Gift Certificate is either invalid or the balance has been used up!"),
+                "Verify invalid Gift voucher message");
+        assertTrue(page.getShoppingCart().getText().contains("1 item(s) - 77.00€"), "Verify shopping cart Label");
     }
 
 }
