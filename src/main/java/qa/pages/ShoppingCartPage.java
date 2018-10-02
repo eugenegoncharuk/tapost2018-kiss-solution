@@ -35,6 +35,9 @@ public class ShoppingCartPage extends Page {
     @FindBy(xpath = "//div[contains(@class,'alert-dismissible')]")
     private WebElement warningMessage;
 
+    @FindBy(xpath = "//a[@class='btn btn-primary' and contains(text(), 'Checkout')]")
+    private WebElement checkoutButton;
+
     @FindBy(xpath = "//div[@class='table-responsive']//table[contains(@class,'table-bordered')]//tbody//td[last()]")
     private WebElement productPriceSum;
 
