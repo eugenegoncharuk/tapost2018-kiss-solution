@@ -32,8 +32,7 @@ public class SearchTest extends FrameworkTest {
 
         page.waitToBeLoaded();
 
-        page.getSearchInputField().click();
-        page.sendKeys("boo");
+        page.getSearchInputField().sendKeys("boo");
 
         page.getSearchButton().click();
         page.pause(3L);
@@ -49,8 +48,7 @@ public class SearchTest extends FrameworkTest {
 
         page.waitToBeLoaded();
 
-        page.getSearchInputField().click();
-        page.sendKeys("boo");
+        page.getSearchInputField().sendKeys("boo");
 
         page.getCategoryDropdown().click();
         page.selectFromCategoryDropdown("Windows");
@@ -70,8 +68,7 @@ public class SearchTest extends FrameworkTest {
 
         page.waitToBeLoaded();
 
-        page.getSearchInputField().click();
-        page.sendKeys("tab");
+        page.getSearchInputField().sendKeys("tab");
 
         page.getCategoryDropdown().click();
         page.selectFromCategoryDropdown("Tablets");
@@ -92,8 +89,7 @@ public class SearchTest extends FrameworkTest {
 
         page.waitToBeLoaded();
 
-        page.getSearchInputField().click();
-        page.sendKeys("ipsum");
+        page.getSearchInputField().sendKeys("ipsum");
 
         page.getDescriptionCheckbox().click();
 
@@ -111,8 +107,7 @@ public class SearchTest extends FrameworkTest {
 
         page.waitToBeLoaded();
 
-        page.getSearchInputField().click();
-        page.sendKeys("book");
+        page.getSearchInputField().sendKeys("book");
 
         page.getSearchButton().click();
         page.pause(3L);

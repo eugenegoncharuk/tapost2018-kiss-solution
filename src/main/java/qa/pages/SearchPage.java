@@ -44,6 +44,9 @@ public class SearchPage extends Page {
     @FindBy(xpath = "//select[@id='input-sort']")
     private WebElement sortDropdown;
 
+    @FindBy(xpath = "//ul[@class='pagination']")
+    private WebElement pagination;
+
     public SearchPage(RemoteWebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
