@@ -38,7 +38,7 @@ public class LoginPage extends Page {
     }
 
     @Override
-    protected Pages getPage() {
+    protected String getPage() {
         return Pages.LOGIN_PAGE;
     }
 

@@ -1,7 +1,7 @@
 package com;
 
 import core.Extensions.repeater.RepeatedIfExceptionsTest;
-import core.GlobalWorld;
+import core.FrameworkTest;
 import core.remote.SeleniumException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -10,7 +10,7 @@ import qa.pages.LoginPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LoginUserTest extends GlobalWorld {
+public class LoginUserTest extends FrameworkTest {
 
     LoginPage page;
 

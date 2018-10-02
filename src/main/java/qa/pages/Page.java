@@ -15,7 +15,7 @@ public abstract class Page {
         this.driver = driver;
     }
 
-    protected Pages getPage() {
+    protected String getPage() {
         return null;
     }
 
@@ -27,8 +27,12 @@ public abstract class Page {
 
     public void open() {
         if (getPage() != null) {
-            PageUtils.openPage(getPage().getPostfix());
+            PageUtils.openPage(getPage());
         }
+    }
+
+    public void openAndWaitToBeLoaded() {
+        open();
         waitToBeLoaded();
     }
 
