@@ -38,8 +38,8 @@ public class ShoppingCartPage extends Page {
     @FindBy(xpath = "//a[@class='btn btn-primary' and contains(text(), 'Checkout')]")
     private WebElement checkoutButton;
 
-    @FindBy(xpath = "//div[@class='table-responsive']//table[contains(@class,'table-bordered')]//tbody//td[last()]")
-    private WebElement productPriceSum;
+    @FindBy(xpath = "//div[contains(@class,'col-sm-4')]//tbody//tr[last()]//td[last()]")
+    private WebElement productPriceWithDiscount;
 
     public ShoppingCartPage(RemoteWebDriver driver) {
         super(driver);
