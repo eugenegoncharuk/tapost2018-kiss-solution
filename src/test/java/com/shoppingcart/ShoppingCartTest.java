@@ -136,8 +136,8 @@ public class ShoppingCartTest extends FrameworkTest {
         cartPage.getGiftVoucherSubmitButton().click();
         cartPage.pause(2L);
 
-        assertEquals("77.00€", cartPage.getProductPriceSum().getText(), "Verify shopping cart Label");
-        assertTrue(cartPage.getShoppingCart().getText().contains("1 item(s) - 77.00€"), "Verify shopping cart Label");
+        assertEquals("20.00€", cartPage.getProductPriceSum().getText(), "Verify shopping cart Label");
+        assertTrue(cartPage.getShoppingCart().getText().contains("1 item(s) - 20.00€"), "Verify shopping cart Label");
     }
 
 }
