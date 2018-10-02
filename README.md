@@ -5,3 +5,4 @@ Using Selenium + JUnit5
 
 Mobile Testing:<br>
 Future: Automated testing for mobile https://aws.amazon.com/device-farm/
+Also BrowserStack could be used to automate on unit tests.
