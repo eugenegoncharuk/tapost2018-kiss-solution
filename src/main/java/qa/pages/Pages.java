@@ -10,5 +10,6 @@ public final class Pages {
     public static final String SEARCH_PAGE = "index.php?route=product/search";
 
     //product pages
-    public static final String MAMOTH_D300_PAGE = "index.php?route=product/product&path=33&product_id=31";
+    public static final String MAMOTH_D300_PRODUCT_PAGE = "index.php?route=product/product&path=33&product_id=31";
+    public static final String TABLET_PRODUCT_PAGE= "index.php?route=product/product&path=57&product_id=49";
 }

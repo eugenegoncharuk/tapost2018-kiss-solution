@@ -19,16 +19,13 @@ public class ShoppingCartTest extends FrameworkTest {
 
     ProductPage page;
 
-    @BeforeEach
-    public void initPage() {
-        page = new ProductPage(getDriver(), Pages.MAMOTH_D300_PAGE);
-        page.open();
-    }
-
     @DisplayName("Test add item to shopping cart")
     @Tag("LOCAL")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void addItemToShoppingCart() {
+
+        page = new ProductPage(getDriver(), Pages.MAMOTH_D300_PRODUCT_PAGE);
+        page.open();
 
         page.getAddToCartButton().click();
         page.pause(2L);
@@ -41,11 +38,14 @@ public class ShoppingCartTest extends FrameworkTest {
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void addSeveralItemsToShoppingCart() {
 
+        page = new ProductPage(getDriver(), Pages.TABLET_PRODUCT_PAGE);
+        page.open();
+
         page.getQuantityInputField().sendKeys("2");
         page.getAddToCartButton().click();
         page.pause(2L);
 
-        assertTrue(page.getShoppingCart().getText().contains("2 item(s) - 160.00€"), "Verify shopping cart Label");
+        assertTrue(page.getShoppingCart().getText().contains("2 item(s) - 399.98€"), "Verify shopping cart Label");
     }
 
 }
