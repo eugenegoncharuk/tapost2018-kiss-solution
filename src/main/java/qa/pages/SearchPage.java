@@ -61,7 +61,7 @@ public class SearchPage extends Page {
     }
 
     @Override
-    protected Pages getPage() {
+    protected String getPage() {
         return Pages.SEARCH_PAGE;
     }
 

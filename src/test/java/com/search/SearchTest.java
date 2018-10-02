@@ -2,6 +2,7 @@ package com.search;
 
 import core.Extensions.repeater.RepeatedIfExceptionsTest;
 import core.Extensions.selenium.SeleniumExtension;
+import core.FrameworkTest;
 import core.remote.SeleniumException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +14,7 @@ import static core.Extensions.selenium.SeleniumExtension.getDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SeleniumExtension.class)
-public class SearchTest {
+public class SearchTest extends FrameworkTest {
 
     SearchPage page;
 

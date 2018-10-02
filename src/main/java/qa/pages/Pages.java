@@ -1,21 +1,9 @@
 package qa.pages;
 
-public enum Pages {
+public final class Pages {
 
-    //common pages
-    LOGIN_PAGE("index.php?route=account/login"),
-
-    //search
-    SEARCH_PAGE("index.php?route=product/search");
-
-    private final String postfix;
-
-    Pages(String postfix) {
-        this.postfix = postfix;
-    }
-
-    public String getPostfix() {
-        return postfix;
-    }
-
+    //common browsecategories
+    public static final String LOGIN_PAGE = "index.php?route=account/login";
+    public static final String CATEGORY_PAGE = "index.php?route=product/category&path=";
+    public static final String SEARCH_PAGE = "index.php?route=product/search";
 }

@@ -30,10 +30,10 @@ public class BrowserUtils {
 
         setDefaultCapabilities(browser);
         try {
-            String serverUrl = getValue(ConfigProperty.WEBDRIVER_URL);
+            final  String serverUrl = getValue(ConfigProperty.WEBDRIVER_URL);
             RemoteWebDriver driver = null;
 
-            int maxRetries = Integer.parseInt(getValue(ConfigProperty.MAX_RETRIES));
+            final int maxRetries = Integer.parseInt(getValue(ConfigProperty.MAX_RETRIES));
             for (int i=0; i<maxRetries; i++){
                 try {
                     driver = new RemoteWebDriver(new URL(serverUrl + "/wd/hub"), browser);

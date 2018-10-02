@@ -11,7 +11,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GlobalWorld {
+public class FrameworkTest {
 
     public static RemoteWebDriver driver;
 
