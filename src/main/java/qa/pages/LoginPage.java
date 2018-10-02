@@ -17,11 +17,20 @@ public class LoginPage extends Page {
     @FindBy(xpath = "//input[@id='input-email']")
     private WebElement emailInput;
 
-    @FindBy(xpath = "//input[@id='input-email']")
+    @FindBy(xpath = "//input[@id='input-password']")
     private WebElement passwordInput;
 
     @FindBy(xpath = "//input[@value='Login']")
     private WebElement loginButton;
+
+    @FindBy(xpath = "//a[text()='Edit Account']")
+    private WebElement editAccount;
+
+    @FindBy(xpath = "//input[@id='input-firstname']")
+    private WebElement firstNameInput;
+
+    @FindBy(xpath = "//input[@id='input-lastname']")
+    private WebElement lastNameInput;
 
     public LoginPage(RemoteWebDriver driver) {
         super(driver);

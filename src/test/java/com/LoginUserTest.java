@@ -28,7 +28,12 @@ public class LoginUserTest extends GlobalWorld {
         page.getPasswordInput().sendKeys("qwas");
         page.getLoginButton().click();
 
-        assertEquals(6, 6, "User is Logged in");
+        page.getEditAccount().click();
+
+        assertEquals("KISS_TESTER", page.getFirstNameInput().getAttribute("value"),
+                "Verify is logged with correct Name");
+        assertEquals("TESTATHON", page.getLastNameInput().getAttribute("value"),
+                "Verify is logged with correct LastName");
     }
 
 }
