@@ -65,4 +65,26 @@ public class ShoppingCartTest extends FrameworkTest {
         assertTrue(page.getShoppingCart().getText().contains("0 item(s) - 0.00€"), "Verify shopping cart Label - No Items");
     }
 
+    @DisplayName("Test change item count on shopping cart")
+    @Tag("LOCAL")
+    @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
+    public void changeItemCountOnShoppingCart() {
+
+        page = new ProductPage(getDriver(), Pages.MAMOTH_D300_PRODUCT_PAGE);
+        page.open();
+
+        page.getAddToCartButton().click();
+        page.pause(2L);
+
+        page.getShoppingCart().click();
+        page.getViewCartLink().click();
+        page.pause(2L);
+
+        page.getCartQuantityInputField().sendKeys(Keys.BACK_SPACE);
+        page.getQuantityInputField().sendKeys("2");
+        page.getCartUpdateInputButton().click();
+
+        assertTrue(page.getShoppingCart().getText().contains("2 item(s) - 399.98€"), "Verify shopping cart Label");
+    }
+
 }
