@@ -64,8 +64,27 @@ public class SearchTest extends FrameworkTest {
         page.getSearchButton().click();
         page.pause(3L);
 
-        assertEquals(1, page.getSearchResultsCount(), "Verify search result is not empty");
+        assertEquals(1, page.getSearchResultsCount(), "Verify search results is not empty");
         assertTrue(page.getProductTitlesInResults().contains("Space Tab 10.1"));
+    }
+
+    @DisplayName("Test Search in Product Description")
+    @Tag("LOCAL")
+    @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
+    public void searchInProductDescription() {
+
+        page.waitToBeLoaded();
+
+        page.getSearchInputField().click();
+        page.sendKeys("ipsum");
+
+        page.getDescriptionCheckbox().click();
+
+        page.getSearchButton().click();
+        page.pause(3L);
+
+        assertTrue(page.getSearchResultsCount() > 0 , "Verify search results is not empty");
+        assertTrue(page.getProductTitlesInResults().contains("BakBook Air"));
     }
 
 }
