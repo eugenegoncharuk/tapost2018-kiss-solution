@@ -14,6 +14,9 @@ public class ShoppingCartPage extends Page {
     @FindBy(xpath = "//h1")
     private WebElement title;
 
+    @FindBy(xpath = "//div[@id='cart']")
+    private WebElement shoppingCart;
+
     @FindBy(xpath = "//div[contains(@class,'btn-block')]//input[@class='form-control']")
     private WebElement cartQuantityInputField;
 
@@ -32,7 +35,7 @@ public class ShoppingCartPage extends Page {
     @FindBy(xpath = "//div[contains(@class,'alert-dismissible')]")
     private WebElement warningMessage;
 
-    @FindBy(xpath = "//table[@class='table-bordered']//tbody//td[last]")
+    @FindBy(xpath = "//div[@class='table-responsive']//table[contains(@class,'table-bordered')]//tbody//td[last()]")
     private WebElement productPriceSum;
 
     public ShoppingCartPage(RemoteWebDriver driver) {

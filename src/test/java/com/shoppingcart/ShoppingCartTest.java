@@ -132,13 +132,12 @@ public class ShoppingCartTest extends FrameworkTest {
 
         ShoppingCartPage cartPage = new ShoppingCartPage(getDriver());
         cartPage.getGiftVoucher().click();
-        cartPage.getGiftVoucherInputField().sendKeys("Invalid Voucher");
+        cartPage.getGiftVoucherInputField().sendKeys("Valid Voucher");
         cartPage.getGiftVoucherSubmitButton().click();
         cartPage.pause(2L);
 
-        assertTrue(cartPage.getWarningMessage().getText().contains("Warning: Gift Certificate is either invalid or the balance has been used up!"),
-                "Verify invalid Gift voucher message");
-        assertTrue(page.getShoppingCart().getText().contains("1 item(s) - 77.00€"), "Verify shopping cart Label");
+        assertEquals("77.00€", cartPage.getProductPriceSum().getText(), "Verify shopping cart Label");
+        assertTrue(cartPage.getShoppingCart().getText().contains("1 item(s) - 77.00€"), "Verify shopping cart Label");
     }
 
 }
