@@ -23,6 +23,27 @@ public class SearchTest {
         page.open();
     }
 
+    @DisplayName("Test Search in SubCategory with no results")
+    @Tag("LOCAL")
+    @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
+    public void searchInSubcategoryWithNoResults() {
+
+        page.waitToBeLoaded();
+
+        page.getSearchInputField().click();
+        page.sendKeys("aaa");
+
+        page.getCategoryDropdown().click();
+        page.selectFromDropdown("PC");
+
+        page.getSubCategoryCheckbox().click();
+
+        page.getSearchButton().click();
+        page.pause(3L);
+
+        assertEquals("Your shopping cart is empty!", page.getEmptySearchResultMessage().getText(), "Verify search result is not empty");
+    }
+
     @DisplayName("Test Search in SubCategory")
     @Tag("LOCAL")
     @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
@@ -39,7 +60,7 @@ public class SearchTest {
         page.getSubCategoryCheckbox().click();
 
         page.getSearchButton().click();
-        page.pause(5L);
+        page.pause(3L);
 
         assertEquals(1, page.getSearchResultsCount(), "Verify search result is not empty");
     }
