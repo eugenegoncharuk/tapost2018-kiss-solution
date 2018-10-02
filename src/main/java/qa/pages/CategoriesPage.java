@@ -20,6 +20,9 @@ public class CategoriesPage extends Page {
     @FindBy(xpath = "//select[@class='product-thumb']")
     private WebElement products;
 
+    @FindBy(xpath = "//a[@class='list-group-item active']")
+    private WebElement activeLeftMenu;
+
     private String categoryNumStr;
 
     private String DROPDOWN_SELECTOR_LOCATOR = "//select[@class='form-control']//option[text()='%s']";
@@ -44,6 +47,6 @@ public class CategoriesPage extends Page {
     }
 
     public int getProductElementsCount() {
-        return driver.findElements(By.xpath("//select[@class='product-thumb']")).size();
+        return driver.findElements(By.xpath("//div[@class='product-thumb']")).size();
     }
 }
