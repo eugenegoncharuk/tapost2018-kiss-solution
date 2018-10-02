@@ -47,6 +47,9 @@ public class SearchPage extends Page {
     @FindBy(xpath = "//ul[@class='pagination']")
     private WebElement pagination;
 
+    @FindBy(xpath = "//option[contains(text(), 'PC')]")
+    private WebElement subCategoryPC;
+
     public SearchPage(RemoteWebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);

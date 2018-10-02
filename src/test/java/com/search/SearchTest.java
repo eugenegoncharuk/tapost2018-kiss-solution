@@ -27,26 +27,22 @@ public class SearchTest extends FrameworkTest {
 
     @DisplayName("Test Search by regular expression")
     @Tag("LOCAL")
-    @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
+    @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void searchByRegExp() {
-
-        page.waitToBeLoaded();
 
         page.getSearchInputField().sendKeys("boo");
 
         page.getSearchButton().click();
         page.pause(3L);
 
-        assertEquals(3, page.getSearchResultsCount(), "Verify search results is not empty");
+        assertEquals(6, page.getSearchResultsCount(), "Verify search results is not empty");
         assertTrue(page.getProductTitlesInResults().contains("BakBook Air"));
     }
 
     @DisplayName("Test Search in SubCategory with no results")
     @Tag("LOCAL")
-    @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
+    @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void searchInSubcategoryWithNoResults() {
-
-        page.waitToBeLoaded();
 
         page.getSearchInputField().sendKeys("boo");
 
@@ -63,15 +59,13 @@ public class SearchTest extends FrameworkTest {
 
     @DisplayName("Test Search in SubCategory")
     @Tag("LOCAL")
-    @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
+    @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void searchInSubcategory() {
-
-        page.waitToBeLoaded();
 
         page.getSearchInputField().sendKeys("tab");
 
         page.getCategoryDropdown().click();
-        page.selectFromCategoryDropdown("Tablets");
+        page.getSubCategoryPC().click();
 
         page.getSubCategoryCheckbox().click();
 
@@ -84,10 +78,8 @@ public class SearchTest extends FrameworkTest {
 
     @DisplayName("Test Search in Product Description")
     @Tag("LOCAL")
-    @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
+    @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void searchInProductDescription() {
-
-        page.waitToBeLoaded();
 
         page.getSearchInputField().sendKeys("ipsum");
 
@@ -102,10 +94,8 @@ public class SearchTest extends FrameworkTest {
 
     @DisplayName("Test Search Results Sorting")
     @Tag("LOCAL")
-    @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
+    @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void searchResultsSorting() {
-
-        page.waitToBeLoaded();
 
         page.getSearchInputField().sendKeys("book");
 
