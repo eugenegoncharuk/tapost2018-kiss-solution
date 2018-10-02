@@ -26,7 +26,7 @@ public class BrowserUtils {
     public static String videoURL = "None";
 
     public static RemoteWebDriver configureBrowser() {
-        DesiredCapabilities browser = configureIE();
+        FirefoxOptions browser = new FirefoxOptions();
 
         setDefaultCapabilities(browser);
         try {
@@ -59,7 +59,7 @@ public class BrowserUtils {
         }
     }
 
-    private static void setDefaultCapabilities(DesiredCapabilities browser) {
+    private static void setDefaultCapabilities(FirefoxOptions browser) {
         if (Boolean.valueOf(getValue(ConfigProperty.SELENIUM_GRID))) {
             browser.setCapability("project", getValue(ConfigProperty.SELENIUM_GRID_PROJECT));
 
