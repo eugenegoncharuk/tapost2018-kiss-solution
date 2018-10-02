@@ -132,7 +132,7 @@ public class ShoppingCartTest extends FrameworkTest {
 
         ShoppingCartPage cartPage = new ShoppingCartPage(getDriver());
         cartPage.getGiftVoucher().click();
-        cartPage.getGiftVoucherInputField().sendKeys("Valid Voucher");
+        cartPage.getGiftVoucherInputField().sendKeys("KISS-05");
         cartPage.getGiftVoucherSubmitButton().click();
         cartPage.pause(2L);
 
