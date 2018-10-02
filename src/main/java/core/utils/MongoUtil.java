@@ -16,7 +16,7 @@ import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 
 @Getter
-public class MongoUtils {
+public class MongoUtil {
 
     private String host;
     private int port;
@@ -28,11 +28,11 @@ public class MongoUtils {
     private MongoDatabase database;
     private MongoCollection<Document> collection;
 
-    public MongoUtils(String host, int port, String dbName) {
+    public MongoUtil(String host, int port, String dbName) {
         this(host, port, dbName, null, null);
     }
 
-    public MongoUtils(String host, int port, String dbName, String username, String password) {
+    public MongoUtil(String host, int port, String dbName, String username, String password) {
         this.host = host;
         this.port = port;
         this.dbName = dbName;
