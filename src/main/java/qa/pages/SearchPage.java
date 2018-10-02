@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -40,9 +41,6 @@ public class SearchPage extends Page {
     @FindBy(xpath = "//div[@class='caption']//h4/a")
     private List<WebElement> searchResultsProductsTitles;
 
-    @FindBy(xpath = "//select[@id='input-sort']")
-    private WebElement sortDropdown;
-
     private String DROPDOWN_SELECTOR_LOCATOR = "//select[@class='form-control']//option[text()='%s']";
 
     public SearchPage(RemoteWebDriver driver) {
@@ -51,7 +49,8 @@ public class SearchPage extends Page {
     }
 
     public void selectFromDropdown(String category) {
-        PageUtils.getElementWhenVisible(By.xpath(String.format(DROPDOWN_SELECTOR_LOCATOR, category))).click();
+        Select dropdown = new Select(PageUtils.getElementWhenVisible(By.xpath(DROPDOWN_SELECTOR_LOCATOR)));
+        dropdown.selectByVisibleText(category);
     }
 
     public int getSearchResultsCount() {

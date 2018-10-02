@@ -14,8 +14,11 @@ public class CategoriesPage extends Page {
     @FindBy(xpath = "//*[@id=\"content\"]/h2")
     private WebElement categoryTitle;
 
-    @FindBy(xpath = " //*[@id=\"input-limit\"]")
+    @FindBy(xpath = "//*[@id=\"input-limit\"]")
     private WebElement inputLimitDropDown;
+
+    @FindBy(xpath = "//select[@class='product-thumb']")
+    private WebElement products;
 
     private String categoryNumStr;
 
@@ -40,4 +43,7 @@ public class CategoriesPage extends Page {
         PageUtils.getElementWhenVisible(By.xpath(String.format(DROPDOWN_SELECTOR_LOCATOR, limit))).click();
     }
 
+    public int getProductElementsCount() {
+        return driver.findElements(By.xpath("//select[@class='product-thumb']")).size();
+    }
 }

@@ -4,15 +4,14 @@ import core.Extensions.repeater.RepeatedIfExceptionsTest;
 import core.Extensions.selenium.SeleniumExtension;
 import core.FrameworkTest;
 import core.remote.SeleniumException;
-import core.utils.PageUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.PageFactory;
 import qa.pages.CategoriesPage;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SeleniumExtension.class)
 public class BrowseAndCategoriesTest extends FrameworkTest {
@@ -36,6 +35,8 @@ public class BrowseAndCategoriesTest extends FrameworkTest {
 
         page.getInputLimitDropDown().click();;
         page.selectFromDropdown("100");
+
+        assertTrue(page.getProductElementsCount() > 0);
 
     }
 
