@@ -14,6 +14,15 @@ public class LoginPage extends Page {
     @FindBy(xpath = "//h2[text()='Returning Customer']")
     private WebElement headerLogin;
 
+    @FindBy(xpath = "//input[@id='input-email']")
+    private WebElement emailInput;
+
+    @FindBy(xpath = "//input[@id='input-email']")
+    private WebElement passwordInput;
+
+    @FindBy(xpath = "//input[@value='Login']")
+    private WebElement loginButton;
+
     public LoginPage(RemoteWebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);

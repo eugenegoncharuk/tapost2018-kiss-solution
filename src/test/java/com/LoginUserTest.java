@@ -22,8 +22,12 @@ public class LoginUserTest extends GlobalWorld {
 
     @DisplayName("Login User Test")
     @Tag("LOCALHOST")
-    @RepeatedIfExceptionsTest(repeats = 3, exceptions = SeleniumException.class)
+    @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
     public void sampletest() {
+        page.getEmailInput().sendKeys("mytestathon@megamail.com");
+        page.getPasswordInput().sendKeys("qwas");
+        page.getLoginButton().click();
+
         assertEquals(6, 6, "User is Logged in");
     }
 
