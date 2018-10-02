@@ -6,24 +6,24 @@ import core.remote.SeleniumException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-import qa.pages.LoginPage;
+import qa.pages.UserLoginPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LoginUserTest extends FrameworkTest {
+public class UserLoginTest extends FrameworkTest {
 
-    LoginPage page;
+    UserLoginPage page;
 
     @BeforeEach
     public void initPage() {
-        page = new LoginPage(getDriver());
+        page = new UserLoginPage(getDriver());
         page.open();
     }
 
-    @DisplayName("Login User Test")
+    @DisplayName("Check user is logged in")
     @Tag("LOCALHOST")
     @RepeatedIfExceptionsTest(repeats = 2, exceptions = SeleniumException.class)
-    public void sampletest() {
+    public void userLogintest() {
         page.getEmailInput().sendKeys("mytestathon@megamail.com");
         page.getPasswordInput().sendKeys("qwas");
         page.getLoginButton().click();

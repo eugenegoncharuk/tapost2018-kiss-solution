@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 @Getter
-public class LoginPage extends Page {
+public class UserLoginPage extends Page {
 
     @FindBy(xpath = "//h2[text()='Returning Customer']")
     private WebElement headerLogin;
@@ -32,7 +32,7 @@ public class LoginPage extends Page {
     @FindBy(xpath = "//input[@id='input-lastname']")
     private WebElement lastNameInput;
 
-    public LoginPage(RemoteWebDriver driver) {
+    public UserLoginPage(RemoteWebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
