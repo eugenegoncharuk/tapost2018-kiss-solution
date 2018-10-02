@@ -105,7 +105,7 @@ public class SearchTest extends FrameworkTest {
         page.selectFromDropdown("Price (High > Low)");
         page.pause(3L);
 
-        assertTrue(page.getProductTitlesInResults().get(0).equals("BakBook Pro"));
+        assertTrue(page.getProductTitlesInResults().get(0).equals("BakBook Pro 2018"), "Verify First result after sorting");
     }
 
     @DisplayName("Test Search check Result Pagination")
